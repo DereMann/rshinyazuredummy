@@ -1,0 +1,10 @@
+FROM rocker/shiny:3.5.1
+  
+
+# copy the app to the image COPY shinyapps /srv/shiny-server/
+# make all app files readable (solves issue when dev in Windows, but building in Ubuntu)
+RUN chmod -R 755 /srv/shiny-server/
+
+EXPOSE 3838
+
+CMD ["/usr/bin/shiny-server.sh"] 

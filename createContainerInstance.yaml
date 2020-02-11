@@ -1,0 +1,30 @@
+apiVersion: 2018-10-01
+location: eastus
+name: jrztest_s
+properties:
+  containers:
+  - name: jrztest
+    properties:
+      environmentVariables:
+        - name: 'NOTSECRET'
+          value: 'my-exposed-value'
+        - name: 'JRZShinyDBPwd'
+          secureValue: 'test___91835'
+        - name: 'JRZShinyDBUser'
+          secureValue: 'shinytest'
+      image: deremann/jrztest:1.1
+      resources:
+        requests:
+          cpu: 1.0
+          memoryInGB: 1.5
+      ports:
+      - port: 3838
+  osType: Linux
+  ipAddress:
+    type: Public
+    ports:
+    - protocol: tcp
+      port: '3838'
+  restartPolicy: Always
+tags: null
+type: Microsoft.ContainerInstance/containerGroups
