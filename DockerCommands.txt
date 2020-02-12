@@ -1,0 +1,7 @@
+docker image build --build-arg dbuser=shinytest --build-arg dbpwd=test___91835 -t jrztest:1.2 .
+
+docker image tag jrztest:1.2 deremann/jrztest:1.2
+
+docker image push deremann/jrztest:1.2
+
+docker container run --publish 3838:3838 jrztest:1.2

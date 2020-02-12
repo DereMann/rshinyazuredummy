@@ -8,8 +8,8 @@ DBCONN <- DBI::dbConnect(
   Driver = DRIVERNAME,
   Server = 'tcp:jrz-shinytestdb.database.windows.net,1433',
   Database = 'jrzshinyTestDB',
-  UID = Sys.getenv("JRZShinyDBUser"),
-  PWD = Sys.getenv("JRZShinyDBPwd")
+  UID = getOption("dbuser"),
+  PWD = getOption("dbpwd")
 )
 
 

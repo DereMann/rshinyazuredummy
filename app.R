@@ -18,8 +18,8 @@ DBCONN <- DBI::dbConnect(
     Driver = DRIVERNAME,
     Server = 'tcp:jrz-shinytestdb.database.windows.net,1433',
     Database = 'jrzshinyTestDB',
-    UID = Sys.getenv("JRZShinyDBUser"),
-    PWD = Sys.getenv("JRZShinyDBPwd")
+    UID = Sys.getenv("userid"),
+    PWD = Sys.getenv("pwd")
 )
 
 # Define UI for application that draws a histogram

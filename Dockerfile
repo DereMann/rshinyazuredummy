@@ -19,12 +19,17 @@ RUN apt-get update &&\
 
 # Download and install libraries
 RUN R -e "install.packages(c('odbc', 'DBI','shinydashboard', 'shinyjs', 'DT'))"
-#RUN R -e "install.packages(c('plotly', 'ggplot2', 'dplyr'))"
-#RUN apt-get update
-#RUN apt-get install liblzma-dev libbz2-dev libicu-dev default-jdk  -y
-#RUN R -e "install.packages(c('DT'))"
-#RUN R -e "install.packages(c('devtools', 'formattable'))"
 
+ARG dbuser
+ARG dbpwd
+
+# Set credentials
+#RUN R -e "options(dbuser = '${dbuser}')"
+#RUN R -e "options(dbpwd = '$dbpwd')"
+
+RUN touch /home/shiny/.Renviron
+RUN echo "userid = \"${dbuser}\"" >> /home/shiny/.Renviron
+RUN echo "pwd = \"${dbpwd}\"" >> /home/shiny/.Renviron
 
 RUN mkdir -p /srv/shiny-server/test
 COPY . /srv/shiny-server/test
